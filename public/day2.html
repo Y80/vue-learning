@@ -1,0 +1,21 @@
+<head>
+  <title>Vue-learning</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div>{{ xObj }}</div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+        el: 'div',
+        data: {
+          xObj: {
+            name: '危险按钮'
+          }
+        }
+      })
+      // vm.$set(vm.xObj, 'age', 18)
+    Vue.set(vm.xObj, 'age', 28)
+  </script>
+</body>

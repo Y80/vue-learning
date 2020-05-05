@@ -1,0 +1,48 @@
+<title>数据双向绑定</title>
+
+<input type="text" id='input' />
+
+
+<script>
+  // var myObject = {};
+  // Object.defineProperty(myObject, 'prop', {
+  //   // 描述符同时拥有 value writable get set，将抛出异常
+  //   configurable: true, // 该属性可否被配置、删除（使用delete）
+  //   enumerable: true, //该属性可否被迭代
+  //   value: 'This is default value.', // 该属性的默认值
+  //   writable: true, // 该属性可否被赋值
+  //   get: function() {
+  //     return myObject.prop // 取该属性值时 触发堆栈溢出异常
+  //   },
+  //   set: function(value) {
+  //     myObject.prop = value // 为该属性赋值时 触发堆栈溢出异常
+  //   }
+  // })
+
+
+  // 要想对一个数据实现双向数据绑定，需要设置一个中间变量 _xObj
+  var xObj = {};
+  var _xObj = {};
+  Object.defineProperty(xObj, 'prop', {
+    // 调用 xObj.prop 的值时返回的是 _xObj.prop 的值
+    get: function() {
+      return _xObj.prop;
+    },
+    // 为 xObj.prop 赋值时实际是对 _xObj.prop 赋值
+    set: function(newVal) {
+      _xObj.prop = newVal
+      input.value = newVal
+    }
+  })
+
+  input.addEventListener('change', function() {
+    // console.log(arguments)
+    // console.log(arguments[0])
+    xObj.prop = this.value // 等同于 _xObj.prop = this.value
+    console.log(this.value)
+  })
+</script>
+
+
+
+<!-- 参考文档：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty -->

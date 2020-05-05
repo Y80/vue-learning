@@ -1,0 +1,67 @@
+<head>
+  <title>App 收藏夹</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: hsl(200, 50%, 90%);
+    }
+    
+    #cards {}
+    
+    .card {
+      border-radius: 3px;
+      width: 90%;
+      margin: 18px auto 0;
+    }
+    
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <div id="cards">
+      <el-row class="card" v-for="item of 5">
+        <el-col :span="8">
+          <el-image class="app-icon" :src='"https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/07/9c/57/079c572f-45ec-abdd-b185-457c808b9e12/source/100x100bb.jpg"' />
+        </el-col>
+
+        <el-col :span="16" style="border-bottom: gray 1px solid;">
+          <el-row>
+            <span>QQ 音乐</span>
+            <el-button type="primary" round>安装</el-button>
+          </el-row>
+
+          <el-row>other information</el-row>
+        </el-col>
+      </el-row>
+
+
+
+    </div>
+
+
+  </div>
+
+  <script type="text/javascript">
+    // Vue.use(ElementUI);
+    new Vue({
+      el: '#app'
+    })
+  </script>
+
+
+
+</body>
